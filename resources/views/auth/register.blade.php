@@ -3,7 +3,6 @@
 
 <head>
 
-    {{ asset('backend/') }}
 
     <meta charset="utf-8" />
     <title>Register | Admin </title>
@@ -41,31 +40,45 @@
                 <h4 class="text-muted text-center font-size-18"><b>Register</b></h4>
 
                 <div class="p-3">
-                    <form class="form-horizontal mt-3" action="index.html">
+
+                        <form class="form-horizontal mt-3" method="POST" action="{{ route('register') }}">
+                            @csrf
 
                         <div class="form-group mb-3 row">
                             <div class="col-12">
-                                <input class="form-control" type="email" required="" placeholder="Email">
+                                <input class="form-control" id="name" type="text" name="name" required="" placeholder="Name">
                             </div>
                         </div>
 
-                        <div class="form-group mb-3 row">
-                            <div class="col-12">
-                                <input class="form-control" type="text" required="" placeholder="Username">
-                            </div>
-                        </div>
 
-                        <div class="form-group mb-3 row">
-                            <div class="col-12">
-                                <input class="form-control" type="password" required="" placeholder="Password">
+                            <div class="form-group mb-3 row">
+                                <div class="col-12">
+                                    <input class="form-control" id="username" type="text" name="username" required="" placeholder="UserName">
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="form-group mb-3 row">
+                                <div class="col-12">
+                                    <input class="form-control" id="email" type="email" name="email" required="" placeholder="Email">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3 row">
+                                <div class="col-12">
+                                    <input class="form-control" id="password" type="password" name="password" required="" placeholder="Password">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3 row">
+                                <div class="col-12">
+                                    <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" required="" placeholder="Password Confirmation">
+                                </div>
+                            </div>
 
                         <div class="form-group mb-3 row">
                             <div class="col-12">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="form-label ms-1 fw-normal" for="customCheck1">I accept <a href="#" class="text-muted">Terms and Conditions</a></label>
+
                                 </div>
                             </div>
                         </div>
@@ -78,7 +91,7 @@
 
                         <div class="form-group mt-2 mb-0 row">
                             <div class="col-12 mt-3 text-center">
-                                <a href="pages-login.html" class="text-muted">Already have account?</a>
+                                <a href="{{ route('login') }}" class="text-muted">Already have account?</a>
                             </div>
                         </div>
                     </form>
