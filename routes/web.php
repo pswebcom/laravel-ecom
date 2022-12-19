@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -15,11 +14,14 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('admin.index');
-})->middleware(['auth','verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::controller(AdminController::class)->group(function (){
-   Route::get('/admin/logout','destroy')->name('admin.logout');
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/admin/logout', 'destroy')->name('admin.logout');
+    Route::get('/admin/profile', 'Profile')->name('admin.profile');
+    Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
+
 });
 
 Route::middleware('auth')->group(function () {
