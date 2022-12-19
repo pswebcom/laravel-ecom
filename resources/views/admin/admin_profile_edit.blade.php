@@ -12,7 +12,8 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">User Name</label>
                                     <div class="col-sm-10">
-                                        <input name="username" class="form-control" type="text" value="{{$editData->username}}"
+                                        <input name="username" class="form-control" type="text"
+                                               value="{{$editData->username}}"
                                                id="example-text-input">
                                     </div>
                                 </div>
@@ -28,16 +29,18 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label"> Email</label>
                                     <div class="col-sm-10">
-                                        <input name="email" class="form-control" type="text" value="{{$editData->email}}"
+                                        <input name="email" class="form-control" type="text"
+                                               value="{{$editData->email}}"
                                                id="example-text-input">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label"> Profile Image</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label"> Profile
+                                        Image</label>
                                     <div class="col-sm-10">
-                                        <input name="profile_iamge" class="form-control" type="file"
-                                               id="example-text-input">
+                                        <input name="profile_image" class="form-control" type="file"
+                                               id="file-ip-1" accept="image/*" onchange="showPreview(event);">
                                     </div>
                                 </div>
 
@@ -45,10 +48,11 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label"></label>
 
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-10 preview">
                                         <img class="rounded  avatar-lg"
                                              src="{{ asset('backend/assets/images/small/img-5.jpg')}}"
-                                             alt="Card image cap">
+                                             alt="Card image cap"
+                                             id="file-ip-1-preview">
                                     </div>
                                 </div>
 
@@ -61,4 +65,16 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        function showPreview(event) {
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                var preview = document.getElementById("file-ip-1-preview");
+                preview.src = src;
+                preview.style.display = "block";
+            }
+        }
+    </script>
 @endsection
