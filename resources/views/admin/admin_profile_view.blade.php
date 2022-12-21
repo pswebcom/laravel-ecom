@@ -9,7 +9,8 @@
                     <div class="card mt-4"><br><br/>
                         <center>
                             <img class="rounded-circle  avatar-xl"
-                                 src="{{ asset('backend/assets/images/small/img-5.jpg')}}"
+                                 src="{{ (!empty($adminData->profile_image)) ? url('upload/admin_images/'.$adminData->profile_image)
+                                 :url('upload/No_image.jpeg')  }}"
                                  alt="Card image cap">
                         </center>
                         <div class="card-body">
@@ -28,6 +29,5 @@
             <!-- end row -->
         </div>
     </div>
-
 
 @endsection

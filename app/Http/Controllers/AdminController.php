@@ -45,18 +45,18 @@ class AdminController extends Controller
         $data->email = $request->email;
 
         if ($request->file('profile_image')) {
+
+            //grab the file from input
             $file = $request->file('profile_image');
-
+            //concat filename with date
             $filename = date('YmdHi') . $file->getClientOriginalName();
+            //save in public folder
             $file->move(public_path('upload/admin_images'), $filename);
+            //database
             $data['profile_image'] = $filename;
-
         }
-
         $data->save();
-
         return redirect()->route('admin.profile');
-
     }
 
 }
